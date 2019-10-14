@@ -1,0 +1,79 @@
+{{> layout}}
+<style>
+	.textBox {
+		display: flex;
+		position: absolute;
+		bottom: 10px;
+		left: 0px;
+	}
+	
+	#messages {
+		height: calc(100vh - 55px);
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 10px;
+		width: 100%;
+		overflow: auto;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div id="messages">
+			{{#messages}}
+				<div class="bg-white px-2 py-1 rounded col-md-3 my-1">
+						<strong>{{user}}:</strong> {{message}}
+				</div>
+			{{/messages}}
+		</div>
+		<div class="textBox col-md-12">
+			<input class="form-control" id="message" placeholder="Mesaj yazın..." user="{{user.fullname}}">
+			<button class="btn btn-primary ml-1" id="send">Send</button>
+		</div>
+	</div>
+</div>
+
+<script src="../../public/general/js/socket.io.js"></script>
+
+<script>
+	
+	$(function () {
+        const
+                messageArea = $('#messages'),
+                messageBox = $('#message'),
+                user = messageBox.attr('user'),
+                socket = io.connect()
+
+        ;
+
+
+
+
+        $(document).on('click','#send',function(){
+            let message = messageBox.val();
+            socket.emit('send message',{user,message});
+            messageBox.val('')
+        });
+        
+        $(document).on('keydown',function (e) {
+	       if(e.keyCode===13)
+	           $('#send').click();
+        });
+
+        socket.on('new message',data => {
+            let newMessage = `
+		        <div class="bg-white px-2 py-1 rounded col-md-3 my-1">
+		            <strong>${data.user}:</strong> ${data.message}
+		        </div>
+	        `;
+            console.log(data);
+
+            messageArea.append(newMessage);
+
+            $('#messages').animate({
+                scrollTop:$('#messages')[0].scrollHeight
+            },1000)
+        });
+    });
+	
+</script>

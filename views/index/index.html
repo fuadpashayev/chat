@@ -1,0 +1,19 @@
+{{> layout}}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="title">Home Page</h3>
+			{{#user}}
+				Xoş gəldiniz, <strong>{{fullname}}</strong> (<a href="/exit">Çıxış</a>)
+			{{/user}}
+			
+			{{#users}}
+				<div class="bg-white p-1">
+					<a href="/chat">{{fullname}}</a>
+				</div>
+			{{/users}}
+		</div>
+	</div>
+</div>
+
+
