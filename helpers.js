@@ -2,8 +2,9 @@ const helpers = {
     errors: {
         login_or_password_is_incorrect: 'Login və ya şifrə yanlışdır'
     },
-    getErrorMessage: function(error){
-        return this.errors[error];
+    getErrorMessage: function(req){
+        let error = req.query.error;
+        return error ? this.errors[error] : null;
     },
     generateUserName: function(fullName){
         let letters = ['ü','ö','ğ','ı','ə','ç','ş'];
@@ -18,8 +19,15 @@ const helpers = {
     }
 };
 
-String.prototype.getErrorMessage = function(){
-    return helpers.getErrorMessage(this);
+
+Array.prototype.removeIndex = function(key,value){
+    let newObject = [];
+    this.map(obj=>{
+        if(obj[key]!==value){
+            newObject.push(obj);
+        }
+    });
+    return newObject;
 };
 
 module.exports = helpers;

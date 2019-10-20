@@ -2,12 +2,11 @@ const
         express = require('express'),
         app = express(),
         server = require('http').createServer(app),
-        io = require('socket.io').listen(server),
+        io = require('socket.io')(server),
         mustache = require('mustache-express'),
         config = require('./config'),
         bodyParser = require('body-parser'),
-        session = require('express-session'),
-        store = new express.session.MemoryStore
+        session = require('express-session')
 ;
 
 
@@ -20,8 +19,7 @@ app.use('/public', express.static('public'));
 app.use(session({
     secret:'chat_project',
     saveUninitialized: true,
-    resave: true,
-    store: store
+    resave: true
 }));
 
 /*Routes*/

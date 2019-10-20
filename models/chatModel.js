@@ -2,7 +2,7 @@ const Model = require('../interfaces/Model');
 
 class Chat extends Model{
     constructor(){
-        super('chat');
+        super('chats');
     }
 
 }

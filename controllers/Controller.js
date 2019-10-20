@@ -9,12 +9,13 @@ class Controller{
         const user = res.locals.user;
         const Users = new usersModel();
         Users.getAll(users => {
+            users = users.removeIndex('id',user.id);
             res.render('index/index',{user,users});
         });
     }
 
     loginPage(req,res) {
-        let error = req.query.error?req.query.error.getErrorMessage():null;
+        let error = helpers.getErrorMessage(req);
         res.render('index/login',{error});
     }
 

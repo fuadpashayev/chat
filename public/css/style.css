@@ -1,70 +1,63 @@
-/* @extend display-flex; */
-display-flex, .display-flex, .display-flex-center {
-    display: flex;
-    display: -webkit-flex; }
-
-/* @extend list-type-ulli; */
-list-type-ulli {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-
-/* Montserrat-300 - latin */
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
     src: url("../storage/fonts/montserrat/Montserrat-Light.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     src: url("../storage/fonts/montserrat/Montserrat-Regular.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: italic;
     font-weight: 400;
     src: url("../storage/fonts/montserrat/Montserrat-Italic.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     src: url("../storage/fonts/montserrat/Montserrat-Medium.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     src: url("../storage/fonts/montserrat/Montserrat-SemiBold.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     src: url("../storage/fonts/montserrat/Montserrat-Bold.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: italic;
     font-weight: 700;
     src: url("../storage/fonts/montserrat/Montserrat-BoldItalic.ttf");
-    /* IE9 Compat Modes */ }
+}
 @font-face {
     font-family: 'Montserrat';
     font-style: italic;
     font-weight: 900;
-    src: url("../storage/fonts/montserrat/montserrat-v12-latin-900.ttf"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.eot") format("embedded-opentype"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.svg") format("woff2"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff") format("woff"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff2") format("truetype"); }
-a:focus, a:active {
-    text-decoration: none;
+    src: url("../storage/fonts/montserrat/montserrat-v12-latin-900.ttf"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.eot") format("embedded-opentype"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.svg") format("woff2"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff") format("woff"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff2") format("truetype");
+}
+*::-webkit-scrollbar{
+    display: none;
+}
+a{
+    text-decoration: none !important;
     outline: none;
     transition: all 300ms ease 0s;
     -moz-transition: all 300ms ease 0s;
     -webkit-transition: all 300ms ease 0s;
     -o-transition: all 300ms ease 0s;
-    -ms-transition: all 300ms ease 0s; }
+    -ms-transition: all 300ms ease 0s;
+}
 
 input, select, textarea {
     outline: none;
@@ -72,7 +65,8 @@ input, select, textarea {
     -moz-appearance: unset !important;
     -webkit-appearance: unset !important;
     -o-appearance: unset !important;
-    -ms-appearance: unset !important; }
+    -ms-appearance: unset !important;
+}
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     appearance: none !important;
@@ -80,7 +74,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
     -o-appearance: none !important;
     -ms-appearance: none !important;
-    margin: 0; }
+    margin: 0;
+}
 
 input:focus, select:focus, textarea:focus {
     outline: none;
@@ -88,33 +83,39 @@ input:focus, select:focus, textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     -o-box-shadow: none !important;
-    -ms-box-shadow: none !important; }
+    -ms-box-shadow: none !important;
+}
 
 input[type=checkbox] {
     appearance: checkbox !important;
     -moz-appearance: checkbox !important;
     -webkit-appearance: checkbox !important;
     -o-appearance: checkbox !important;
-    -ms-appearance: checkbox !important; }
+    -ms-appearance: checkbox !important;
+}
 
 input[type=radio] {
     appearance: radio !important;
     -moz-appearance: radio !important;
     -webkit-appearance: radio !important;
     -o-appearance: radio !important;
-    -ms-appearance: radio !important; }
+    -ms-appearance: radio !important;
+}
 
 img {
     max-width: 100%;
-    height: auto; }
+    height: auto;
+}
 
 figure {
-    margin: 0; }
+    margin: 0;
+}
 
 p {
     margin-bottom: 0;
     font-size: 15px;
-    color: #777; }
+    color: #777;
+}
 
 h2 {
     line-height: 1.66;
@@ -129,7 +130,8 @@ h2 {
 }
 
 .clear {
-    clear: both; }
+    clear: both;
+}
 
 body {
     font-size: 14px;
@@ -146,7 +148,7 @@ body {
     -o-background-size: cover;
     -ms-background-size: cover;
     background-position: center center;
-    padding: 115px 0; }
+}
 
 
 .display-flex {
@@ -159,7 +161,8 @@ body {
     -moz-align-items: center;
     -webkit-align-items: center;
     -o-align-items: center;
-    -ms-align-items: center; }
+    -ms-align-items: center;
+}
 
 .display-flex-center {
     justify-content: center;
@@ -171,7 +174,8 @@ body {
     -moz-align-items: center;
     -webkit-align-items: center;
     -o-align-items: center;
-    -ms-align-items: center; }
+    -ms-align-items: center;
+}
 
 .position-center {
     position: absolute;
@@ -181,7 +185,8 @@ body {
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); }
+    -ms-transform: translate(-50%, -50%);
+}
 
 .sign-content {
     background: #fff;
@@ -194,7 +199,8 @@ body {
 
 .form-group {
     overflow: hidden;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+}
 
 .form-input {
     width: 100%;
@@ -208,23 +214,32 @@ body {
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 500;
-    color: #222; }
+    color: #222;
+}
 .form-input::-webkit-input-placeholder {
-    color: #999; }
+    color: #999;
+}
 .form-input::-moz-placeholder {
-    color: #999; }
+    color: #999;
+}
 .form-input:-ms-input-placeholder {
-    color: #999; }
+    color: #999;
+}
 .form-input:-moz-placeholder {
-    color: #999; }
+    color: #999;
+}
 .form-input::-webkit-input-placeholder {
-    font-weight: 500; }
+    font-weight: 500;
+}
 .form-input::-moz-placeholder {
-    font-weight: 500; }
+    font-weight: 500;
+}
 .form-input:-ms-input-placeholder {
-    font-weight: 500; }
+    font-weight: 500;
+}
 .form-input:-moz-placeholder {
-    font-weight: 500; }
+    font-weight: 500;
+}
 .form-input:focus {
     border: 1px solid transparent;
     -webkit-border-image-source: -webkit-linear-gradient(to right, #9face6, #74ebd5);
@@ -239,15 +254,20 @@ body {
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
     background-origin: border-box;
-    background-clip: content-box, border-box; }
+    background-clip: content-box, border-box;
+}
 .form-input:focus::-webkit-input-placeholder {
-    color: #222; }
+    color: #222;
+}
 .form-input:focus::-moz-placeholder {
-    color: #222; }
+    color: #222;
+}
 .form-input:focus:-ms-input-placeholder {
-    color: #222; }
+    color: #222;
+}
 .form-input:focus:-moz-placeholder {
-    color: #222; }
+    color: #222;
+}
 
 .form-submit {
     width: 100%;
@@ -267,19 +287,22 @@ body {
     background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
     background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
     background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
-    background-image: linear-gradient(to left, #74ebd5, #9face6); }
+    background-image: linear-gradient(to left, #74ebd5, #9face6);
+}
 
 input[type=checkbox]:not(old) {
     width: 2em;
     margin: 0;
     padding: 0;
     font-size: 1em;
-    display: none; }
+    display: none;
+}
 
 input[type=checkbox]:not(old) + label {
     display: inline-block;
     margin-top: 7px;
-    margin-bottom: 25px; }
+    margin-bottom: 25px;
+}
 
 input[type=checkbox]:not(old) + label > span {
     display: inline-block;
@@ -299,14 +322,16 @@ input[type=checkbox]:not(old) + label > span {
     background-image: -o-linear-gradient(white, white);
     background-image: -webkit-linear-gradient(white, white);
     background-image: linear-gradient(white, white);
-    vertical-align: bottom; }
+    vertical-align: bottom;
+}
 
 input[type=checkbox]:not(old):checked + label > span {
     background-image: -moz-linear-gradient(white, white);
     background-image: -ms-linear-gradient(white, white);
     background-image: -o-linear-gradient(white, white);
     background-image: -webkit-linear-gradient(white, white);
-    background-image: linear-gradient(white, white); }
+    background-image: linear-gradient(white, white);
+}
 
 input[type=checkbox]:not(old):checked + label > span:before {
     content: '\f26b';
@@ -316,15 +341,18 @@ input[type=checkbox]:not(old):checked + label > span:before {
     line-height: 1.2;
     text-align: center;
     font-family: 'Material-Design-Iconic-Font', sans-serif;
-    font-weight: bold; }
+    font-weight: bold;
+}
 
 .label-agree-term {
     font-size: 12px;
     font-weight: 600;
-    color: #555; }
+    color: #555;
+}
 
 .term-service {
-    color: #555; }
+    color: #555;
+}
 
 .loginhere {
     color: #555;
@@ -336,7 +364,8 @@ input[type=checkbox]:not(old):checked + label > span:before {
 
 .loginhere-link {
     font-weight: 700;
-    color: #222; }
+    color: #222;
+}
 
 .field-icon {
     float: right;
@@ -344,10 +373,171 @@ input[type=checkbox]:not(old):checked + label > span:before {
     margin-top: -35px;
     position: relative;
     z-index: 2;
-    color: #555; }
+    color: #555;
+}
 
 .toggle-password {
     cursor: pointer;
 }
 
+.textBox {
+    display: flex;
+    align-items: center;
 
+}
+
+#messages {
+    height: calc(100vh - 55px);
+    overflow: auto;
+}
+
+.header {
+    background: #ffffff;
+    padding: 5px 10px;
+    color: #333;
+    box-shadow: 0 0 4px 0 #adadad;
+    z-index: 999;
+    height: 50px;
+    position: sticky;
+    top: 0;
+}
+
+.profile {
+    float: right;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+}
+
+.logo {
+    float: left;
+    height: 40px;
+}
+
+html.disabled{
+    overflow: hidden;
+}
+
+#bg,#bg.disabled {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #000000ad;
+    transform: scale(0);
+    /*transition: 220ms;*/
+
+}
+
+#bg.active{
+    transform: scale(1);
+    border-radius: 0;
+}
+
+#nav {
+    position: absolute;
+    z-index: 1001;
+    background: white;
+    top: 60px;
+    right: 0;
+    width: calc(300px - 5vw);
+    box-shadow: 0px 1px 5px -2px #adadad;
+    transform: scale(0);
+    transition: 220ms;
+}
+
+#nav.active{
+    transform: scale(1);
+    animation:bubbleOn 1s;
+    animation-iteration-count: 1;
+}
+
+#nav.disabled{
+    transform: scale(0);
+    animation:bubbleOff 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes bubbleOn {
+    0% {
+        transform: scale( .75 );
+    }
+    20% {
+        transform: scale( 1.15 );
+    }
+    40% {
+        transform: scale( .85 );
+    }
+    60% {
+        transform: scale( 1 );
+    }
+}
+
+@keyframes bubbleOff {
+    0% {
+        transform: scale( 1.15 );
+    }
+    20% {
+        transform: scale( 0.85 );
+    }
+    40% {
+        transform: scale( 1 );
+    }
+    60% {
+        transform: scale( 0 );
+    }
+
+}
+
+@media (max-width: 576px){
+    #nav{
+        width: 100%;
+    }
+    .container{
+        padding: 0 !important;
+    }
+}
+
+#nav::before {
+    content: '';
+    height: 0;
+    display: inline-block;
+    border: 7px solid #ffffff00;
+    border-bottom: 12px solid white;
+    position: absolute;
+    top: -17px;
+    right: 23px;
+}
+
+.nav-menu {
+    border-bottom: 1px solid #e9e9e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    transition: 220ms;
+}
+
+.nav-menu:not([disabled]):hover {
+    background: #f1f1f1;
+}
+.navigation {
+    font-size: 20px !important;
+    cursor: pointer;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    transition: 220ms;
+}
+
+.navigation:hover {
+    background: #ebebeb;
+}
