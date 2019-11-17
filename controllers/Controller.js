@@ -1,4 +1,5 @@
 const usersModel = require('../models/usersModel');
+const chatModel = require('../models/chatModel');
 const helpers = require('../helpers');
 const Joi = require('@hapi/joi');
 
@@ -7,10 +8,26 @@ class Controller{
 
     index(req,res) {
         const user = res.locals.user;
+        const Chats = new chatModel();
+        Chats.select('chats.*,messages.id as messageId,messages.message,messages.date as messageDate,chatUsers.id as chatUsersId,chatUsers.fullName as chatUsersFullName,messageUsers.id as messageUsersId,messageUsers.fullName as messageUsersFullName')
+                .leftJoin('users','chats.user1=chatUsers.id or chats.user2=chatUsers.id','chatUsers')
+                .leftJoin('messages','messages.id=chats.lastMessageId')
+                .leftJoin('users','messages.userId = messageUsers.id','messageUsers')
+                .where('chats.user1',user.id,1)
+                .orWhere('chats.user2',user.id,1)
+                .andNotWhere('chatUsers.fullname',user.fullname)
+                .getAll(chats => {
+            // console.log(chats)
+            res.render('index/index',{chats})
+        }); //.sql(query=>console.log(query))
+    }
+
+    newChat(req,res){
+        const user = res.locals.user;
         const Users = new usersModel();
         Users.getAll(users => {
             users = users.removeIndex('id',user.id);
-            res.render('index/index',{user,users});
+            res.render('index/newChat',{user,users});
         });
     }
 

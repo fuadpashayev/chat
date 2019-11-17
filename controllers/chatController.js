@@ -1,19 +1,20 @@
 const
         chatModel = require('../models/chatModel'),
-        usersModel = require('../models/usersModel')
+        usersModel = require('../models/usersModel'),
+        messagesModel = require('../models/messagesModel')
 ;
 
 class ChatController{
     constructor(io=null){
         // console.log(FileStore);
         if(io){
-            // io.sockets.on('connection',socket=>{
-            //     socket.on(`sm_${store.get('userId')}`,function (data) {
-            //         let Chat = new chatModel();
-            //         Chat.create(data);
-            //         io.sockets.emit('new message',data);
-            //     });
-            // });
+            io.sockets.on('connection',socket=>{
+                socket.on(`send message`,function (data) {
+                    // let Chat = new chatModel();
+                    // Chat.create(data);
+                    io.sockets.emit('new message',data);
+                });
+            });
         }
 
     }
@@ -22,13 +23,15 @@ class ChatController{
         let
             Chat = new chatModel(),
             Users = new usersModel(),
-            session = req.session
+            Messages = new messagesModel(),
+            session = req.session,
+            {chatId} = req.params
         ;
 
 
-        Chat.getAll(messages => {
+        Messages.where('chatId',chatId).getAll(messages => {
             Users.find(session.userId,user=>{
-                console.log(user);
+                console.log(user)
                 res.render('chat/index', {messages,user});
             });
 

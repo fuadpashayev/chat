@@ -3,15 +3,14 @@ const
         app = express(),
         server = require('http').createServer(app),
         io = require('socket.io')(server),
-        mustache = require('mustache-express'),
+        edge = require('express-edge'),
         config = require('./config'),
         bodyParser = require('body-parser'),
         session = require('express-session')
 ;
 
 
-app.engine('html',mustache());
-app.set('view engine','html');
+app.use(edge.engine);
 app.set('views',`${__dirname}/views`);
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

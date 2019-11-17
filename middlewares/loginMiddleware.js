@@ -7,17 +7,15 @@ let session;
 
 const loginMiddleware = (req, res, next) => {
     session = req.session;
+    let allowed = ['/login','/register'];
     Users.find(session.userId,(result,err) => {
         if(result){
             res.locals.user = result;
-            next();
+            if(allowed.indexOf(req.path)===-1) next();
+            else res.redirect('/');
         }else{
-            let allowed = ['/login','/register'];
-            if(allowed.indexOf(req.path)!==-1){
-                next();
-            }else{
-                res.redirect('/login');
-            }
+            if(allowed.indexOf(req.path)!==-1) next();
+            else res.redirect('/login');
         }
     });
 };

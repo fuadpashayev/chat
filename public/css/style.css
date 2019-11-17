@@ -383,12 +383,37 @@ input[type=checkbox]:not(old):checked + label > span:before {
 .textBox {
     display: flex;
     align-items: center;
-
+    justify-content: center;
 }
 
 #messages {
-    height: calc(100vh - 55px);
+    height: calc(100vh - 95px);
     overflow: auto;
+}
+
+
+
+#message {
+    width: calc(100% - 60px);
+    resize: none;
+    height: 40px;
+    border-radius: 50px;
+    padding-top: 11px;
+    border: none !important;
+    font-size: 14px;
+}
+
+#send {
+    width: 40px;
+    height: 40px;
+    border-radius: 35px;
+    font-size: 20px;
+}
+
+.messaging-outer {
+    background: url(/public/storage/images/chat_bg3.jpg);
+    background-size: contain;
+    padding-bottom: 5px;
 }
 
 .header {
@@ -540,4 +565,48 @@ html.disabled{
 
 .navigation:hover {
     background: #ebebeb;
+}
+
+.message {
+    width: fit-content;
+    padding: 4px 15px;
+    border-radius: 7.5px;
+    position: relative;
+    clear: both;
+    margin: 5px 10px;
+    box-shadow: 0 1px 0.5px #00000021;
+}
+
+.message.left{
+    background: #ffffff;
+    border-top-left-radius: 0;
+    float: left;
+}
+
+.message.right{
+    background: #dcf8c6;
+    border-top-right-radius: 0;
+    float: right;
+}
+
+.message.left::before, .message.right::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: -4px;
+    border: 10px solid transparent;
+    border-bottom-width: 6px;
+    border-top-width: 4px;
+}
+
+.message.left::before {
+    left: -16px;
+    border-right-color: #ffffff;
+    transform: rotate(22deg);
+}
+
+.message.right::before{
+    right: -16px;
+    border-left-color: #dcf8c6;
+    transform: rotate(-22deg);
 }

@@ -15,9 +15,11 @@ $(function () {
         navMenu('toggle')
     });
 
-    $('#bg,.header').on('click',function(){
-        if(navMenu()) navMenu('close')
+    $('#bg,.header').on('click',function(e){
+        if(!$(e.target).hasClass('nav-menu'))
+            if(navMenu()) navMenu('close')
     });
+
 
     function navMenu(action){
         if(action==='open'){

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="initial-scale=1,user-scalable=no,width=device-width"/>
+	<link rel="stylesheet" href="/public/general/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/public/css/style.css"/>
+	<link rel="stylesheet" href="/public/storage/fonts/material-icon/css/material-design-iconic-font.min.css">
+	@!section('styles')
+</head>
+<body>
+	<div class="container">
+		@if(user)
+		<div id="bg"></div>
+		<div class="header">
+			<img class="logo" src="/public/storage/images/logo.png">
+			<div class="profile">
+				<span class="icon icon-more-vert navigation"></span>
+			</div>
+			<div id="nav">
+				<div class="nav-menu" disabled>{{user.fullname}}</div>
+				<a href="/exit">
+					<div class="nav-menu">Çıxış</div>
+				</a>
+			</div>
+		</div>
+		@endif
+		@!section('content')
+	</div>
+	
+	<script src="/public/general/js/jquery.js"></script>
+	<script src="/public/general/js/popper.js"></script>
+	<script src="/public/general/js/bootstrap.js"></script>
+	<script src="/public/js/script.js"></script>
+	@!section('scripts')
+</body>
+</html>

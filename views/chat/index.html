@@ -1,63 +1,21 @@
-{{> header}}
-<div class="row">
-	<div id="messages" class="col-md-12">
-		{{#messages}}
-			<div class="bg-white px-2 py-1 rounded col-md-3 my-1">
-					<strong>{{user}}:</strong> {{message}}
-			</div>
-		{{/messages}}
+@layout('layout')
+@section('content')
+	<div class="row no-gutters messaging-outer">
+		<div id="messages" class="col-md-12">
+			@each(message in messages)
+				<div class="message {{message.userId===user.id?'right':'left'}}">
+					{{message.message}}
+				</div>
+			@endeach
+		</div>
+		<div class="textBox col-md-12">
+			<textarea class="form-control" id="message" placeholder="Mesaj yazın..."></textarea>
+			<button class="btn btn-primary ml-1 icon icon-mail-send" id="send"></button>
+		</div>
 	</div>
-	<div class="textBox col-md-12">
-		<input class="form-control" id="message" placeholder="Mesaj yazın..." user="{{user.fullname}}">
-		<button class="btn btn-primary ml-1" id="send">Send</button>
-	</div>
-</div>
+@endsection
 
-
-<script src="../../public/general/js/socket.io.js"></script>
-
-<script>
-	
-	$(function () {
-        const
-                messageArea = $('#messages'),
-                messageBox = $('#message'),
-                user = messageBox.attr('user'),
-                socket = io.connect()
-
-        ;
-
-
-
-
-        $(document).on('click','#send',function(){
-            let message = messageBox.val();
-            socket.emit('send message',{user,message});
-            messageBox.val('')
-        });
-        
-        $(document).on('keydown',function (e) {
-	       if(e.keyCode===13)
-	           $('#send').click();
-        });
-
-        socket.on('new message',data => {
-            let newMessage = `
-		        <div class="bg-white px-2 py-1 rounded col-md-3 my-1">
-		            <strong>${data.user}:</strong> ${data.message}
-		        </div>
-	        `;
-            console.log(data);
-
-            messageArea.append(newMessage);
-
-            $('#messages').animate({
-                scrollTop:$('#messages')[0].scrollHeight
-            },1000)
-        });
-    });
-	
-</script>
-
-
-{{> footer}}
+@section('scripts')
+	<script src="../../public/general/js/socket.io.js"></script>
+	<script src="../../public/js/chat.js"></script>
+@endsection

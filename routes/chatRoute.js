@@ -5,7 +5,7 @@ module.exports = function(io){
             ChatController = new chatController(io)
     ;
 
-    route.get('/',ChatController.index);
+    route.get('/:chatId',ChatController.index);
 
     return route;
 };

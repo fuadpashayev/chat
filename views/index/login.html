@@ -1,13 +1,14 @@
-{{> header}}
+@layout('layout')
+@section('content')
 <div class="main">
 	
 	<section class="signup my-5">
 		<div class="container">
 			<div class="row">
 				<div class="sign-content col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7 m-auto px-xs-2 py-5 px-5 ">
-					{{#error}}
-					<div class="alert alert-danger" role="alert">{{.}}</div>
-					{{/error}}
+					@if(error)
+						<div class="alert alert-danger" role="alert">{{error}}</div>
+					@endif
 					<form action="/login" method="POST" id="sign-form" class="sign-form">
 						<h2 class="form-title">Log In</h2>
 						<div class="form-group">
@@ -30,6 +31,5 @@
 	</section>
 
 </div>
-
-{{> footer}}
+@endsection
 

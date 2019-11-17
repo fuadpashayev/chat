@@ -1,80 +1,21 @@
-{{> header}}
+@layout('layout')
+@section('content')
 <div class="row no-gutters">
 	<div class="col-md-12">
-		<div class="bg-white px-2">
+		<div class="bg-white">
 			<h3 class="title">Users</h3>
-			{{#users}}
-				<a href="/chat/{{id}}"><div class="menu">{{fullname}}</div></a>
-			{{/users}}
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
-			aaaaaaaaaaaaaaa <br>
+			@each(chat in chats)
+			<div class="inbox">
+				<a href="/chat/{{chat.id}}">
+					<div class="inbox-menu">
+						Chat: {{chat.chatUsersFullName}}<br>
+						{{chat.messageUsersFullName}}: {{chat.message}}<br>
+						<br/>
+				</div>
+				</a>
+			</div>
+			@endeach
 		</div>
 	</div>
 </div>
-
-
-{{> footer}}
+@endsection

@@ -9,6 +9,8 @@ const
         })
 ;
 
-db.connect();
+db.connect('',res =>{
+    console.log(res)
+});
 
 module.exports = db;
