@@ -32,6 +32,10 @@ class Model {
         });
     }
 
+    async findAsync(id){
+        return await db.query(`${this.query} where id=${id}`);
+    }
+
 
 
     where(statement,value,withBraces=false){
@@ -53,6 +57,29 @@ class Model {
             }
         }else{
             this.query += ` where ${withBraces?'(':''}${statement}="${value}"`;
+        }
+        return this;
+    }
+
+    notWhere(statement,value,withBraces=false){
+        if(this.checkParameterExists('where')){
+            this.generatePrimaryQuery();
+        }
+        if(typeof statement==="object"){
+            let whereKeys = Object.keys(statement);
+            let whereValues = Object.values(statement);
+            for(let where of whereValues){
+                let index = whereValues.indexOf(where);
+                let stmt = whereKeys[index];
+                let vl = whereValues[index];
+                if(index===0){
+                    this.query += ` where ${stmt}!="${vl}"`;
+                }else{
+                    this.query += ` and ${stmt}!="${vl}"`;
+                }
+            }
+        }else{
+            this.query += ` where ${withBraces?'(':''}${statement}!="${value}"`;
         }
         return this;
     }
@@ -132,6 +159,10 @@ class Model {
             callback(result,err);
         });
         return this;
+    }
+
+    async getAllAsync(){
+        return await db.query(this.query);
     }
 
     sql(callback){

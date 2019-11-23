@@ -9,7 +9,16 @@ class Controller{
     index(req,res) {
         const user = res.locals.user;
         const Chats = new chatModel();
-        Chats.select('chats.*,messages.id as messageId,messages.message,messages.date as messageDate,chatUsers.id as chatUsersId,chatUsers.fullName as chatUsersFullName,messageUsers.id as messageUsersId,messageUsers.fullName as messageUsersFullName')
+        Chats.select(`chats.*,
+                messages.id as messageId,
+                messages.message,
+                messages.date as messageDate,
+                chatUsers.id as chatUsersId,
+                chatUsers.fullName as chatUsersFullName,
+                chatUsers.photo as chatUsersPhoto,
+                messageUsers.id as messageUsersId,
+                messageUsers.fullName as messageUsersFullName
+        `)
                 .leftJoin('users','chats.user1=chatUsers.id or chats.user2=chatUsers.id','chatUsers')
                 .leftJoin('messages','messages.id=chats.lastMessageId')
                 .leftJoin('users','messages.userId = messageUsers.id','messageUsers')
@@ -17,9 +26,8 @@ class Controller{
                 .orWhere('chats.user2',user.id,1)
                 .andNotWhere('chatUsers.fullname',user.fullname)
                 .getAll(chats => {
-            // console.log(chats)
-            res.render('index/index',{chats})
-        }); //.sql(query=>console.log(query))
+                    res.render('index/index',{chats,user})
+                });
     }
 
     newChat(req,res){
@@ -56,6 +64,8 @@ class Controller{
     registerPage(req,res){
         res.render('index/register',{});
     }
+
+
 
     register(req,res){
         const Users = new usersModel();

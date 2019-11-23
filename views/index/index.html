@@ -4,17 +4,26 @@
 	<div class="col-md-12">
 		<div class="bg-white">
 			<h3 class="title">Users</h3>
-			@each(chat in chats)
-			<div class="inbox">
+			<div class="inboxes">
+				@each(chat in chats)
 				<a href="/chat/{{chat.id}}">
 					<div class="inbox-menu">
-						Chat: {{chat.chatUsersFullName}}<br>
-						{{chat.messageUsersFullName}}: {{chat.message}}<br>
-						<br/>
-				</div>
+						<div class="inbox-pic">
+							<img src="{{chat.chatUsersPhoto}}" alt="">
+						</div>
+						<div class="inbox-body">
+							<div class="inbox-name">{{chat.chatUsersFullName}}</div>
+							<div class="inbox-message">
+								@if(chat.chatUsersId==user.id)
+									<i class="material-icons">done_all</i>
+								@endif
+								{{chat.message}}
+							</div>
+						</div>
+					</div>
 				</a>
+				@endeach
 			</div>
-			@endeach
 		</div>
 	</div>
 </div>

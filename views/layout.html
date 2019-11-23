@@ -14,7 +14,13 @@
 		@if(user)
 		<div id="bg"></div>
 		<div class="header">
-			<img class="logo" src="/public/storage/images/logo.png">
+			<a href="/"><img class="logo" src="/public/storage/images/logo.png"></a>
+			@if(chatUser)
+				<div class="chatProfile">
+					<div class="name">{{chatUser.fullname}}</div>
+					<div class="status">Online</div>
+				</div>
+			@endif
 			<div class="profile">
 				<span class="icon icon-more-vert navigation"></span>
 			</div>

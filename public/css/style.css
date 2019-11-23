@@ -382,7 +382,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
 
 .textBox {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
@@ -397,8 +397,9 @@ input[type=checkbox]:not(old):checked + label > span:before {
     width: calc(100% - 60px);
     resize: none;
     height: 40px;
-    border-radius: 50px;
-    padding-top: 11px;
+    max-height: 125px;
+    border-radius: 20px;
+    padding: 11px 50px;
     border: none !important;
     font-size: 14px;
 }
@@ -609,4 +610,56 @@ html.disabled{
     right: -16px;
     border-left-color: #dcf8c6;
     transform: rotate(-22deg);
+}
+
+.inboxes a{
+    color: #333;
+    transition: 220ms;
+}
+
+.inboxes a:hover{
+    color:#000;
+}
+
+.inbox-menu {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: 220ms;
+}
+
+.inbox-menu:hover{
+    background: #ebebeb;
+}
+
+
+.inbox-pic {
+    margin-right: 10px;
+}
+
+.inbox-pic img{
+    width:60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.chatProfile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: -1;
+}
+
+.name {
+    position: relative;
+    top: 5px;
+}
+
+.status {
+    color: #979797;
+    font-size: 10px;
 }
