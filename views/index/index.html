@@ -14,8 +14,8 @@
 						<div class="inbox-body">
 							<div class="inbox-name">{{chat.chatUsersFullName}}</div>
 							<div class="inbox-message">
-								@if(chat.chatUsersId==user.id)
-									<i class="material-icons">done_all</i>
+								@if(chat.messageUserId==user.id)
+									<i class="icon icon-check-all"></i>
 								@endif
 								{{chat.message}}
 							</div>

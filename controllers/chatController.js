@@ -56,15 +56,13 @@ class ChatController {
 
         Users.find(session.userId, user => {
             Chat.select('users.*')
-                .leftJoin('users','chats.user1=users.id or chats.user2=users.id')
-                .notWhere('chats.user1',user.id,1)
-                .orNotWhere('chats.user2',user.id,1)
+                .leftJoin('users',`users.id=if(user1=${user.id},user2,user1)`)
+                .where('chats.id',chatId)
                 .get(chatUser => {
-                    console.log(chatUser)
                     Messages.where('chatId', chatId).getAll(messages => {
                         res.render('chat/index', {messages, user, chatId, chatUser })
                     })
-            });
+            }).sql(sql=>console.log(sql));
         })
 
     }

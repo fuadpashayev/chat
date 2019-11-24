@@ -11,6 +11,7 @@ class Controller{
         const Chats = new chatModel();
         Chats.select(`chats.*,
                 messages.id as messageId,
+                messages.userId as messageUserId,
                 messages.message,
                 messages.date as messageDate,
                 chatUsers.id as chatUsersId,
