@@ -29,6 +29,57 @@ function resetTextBox(){
 }
 
 
+function scrollToBottom(messageArea,speed=700){
+    messageArea.animate({
+        scrollTop:messageArea[0].scrollHeight
+    },speed)
+}
+var alert,windowFocused=true;
+function messageAlertTitle(type='start'){
+    let num = 1;
+    if(type==='start'){
+        alert = setInterval(function() {
+            let message = num%2===0?"FX Social Network":"Yeni mesajınız var!!!";
+            document.title = message;
+            num++;
+            if(windowFocused){
+                clearInterval(alert);
+                document.title = "FX Social Network";
+            }
+        }, 1500);
+    }else if(type==='stop') clearInterval(alert);
+}
+
+
+$(window).on('focus blur',function(e){
+    windowFocused = e.type==='focus';
+});
+
+function checkReadStatus(){
+    $('.read-status').each(function(){
+       let status = $(this).attr('inf');
+       let $this = $(this);
+       if(status==='sending'){
+           setTimeout(function(){
+               $this.attr('anime','');
+               $this.attr('inf','sent');
+               setTimeout(function(){$this.removeAttr('anime');},600);
+               setTimeout(function(){
+                   $this.attr('anime','');
+                   $this.attr('inf','delivered');
+                   setTimeout(function(){$this.removeAttr('anime');},600);
+                   setTimeout(function(){
+                       $this.attr('anime','');
+                       $this.attr('inf','read');
+                       setTimeout(function(){$this.removeAttr('anime');},600);
+                   },750);
+               },750);
+           },750);
+       }
+    });
+}
+
+
 
 $(function () {
     const
@@ -37,10 +88,12 @@ $(function () {
             user = messageBox.attr('user'),
             socket = io.connect(),
             userId = messageBox.attr("userId"),
-            chatId = messageBox.attr("chatId")
+            chatId = messageBox.attr("chatId"),
+            alert = new Audio('/public/storage/audios/alert.mp3')
     ;
 
     TextAreaResize(messageBox);
+    scrollToBottom(messageArea,0);
 
     $(document).on('click','#send',function(){
         let message = messageBox.val().trim();
@@ -64,19 +117,35 @@ $(function () {
     })
 
     socket.on('getTyping',data => {
-       if(data.userId!=userId){
-           $('.status').text(data.typing?'Yazır...':'Online');
+       if(data.userId!==userId){
+           $('.status').text(data.typing?'Yazır...':'Xətdə');
        }
     });
+
     socket.on('newMessage',data => {
+        let lastMessageLeftOrRight = $('#messages .message:last-child').hasClass('left')?'left':'right';
+        let newMessageLeftOrRight = data.userId==userId?'right':'left';
         let newMessage = `
-		        <div class="message ${data.userId==userId?'right':'left'}">
-		            ${data.message}
-		        </div>
-	        `;
+            <div class="message ${newMessageLeftOrRight}" ${lastMessageLeftOrRight!==newMessageLeftOrRight?'arrowed':''}>
+                ${data.message}
+                <div class="message-info">
+                    <div class="date">16:54</div>
+                    ${newMessageLeftOrRight==='right'?`
+                        <div class="read-status" inf="sending"></div>
+                    `:''}
+                </div>
+            </div>
+        `;
+        if(newMessageLeftOrRight==='left'){
+            alert.pause();
+            alert.currentTime = 0.0;
+            alert.play();
+            messageAlertTitle();
+        }
         messageArea.append(newMessage);
-        messageArea.animate({
-            scrollTop:messageArea[0].scrollHeight
-        },1000)
+        scrollToBottom(messageArea);
+        checkReadStatus();
     });
+
+
 });

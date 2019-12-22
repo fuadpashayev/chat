@@ -46,6 +46,7 @@
     font-weight: 900;
     src: url("../storage/fonts/montserrat/montserrat-v12-latin-900.ttf"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.eot") format("embedded-opentype"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.svg") format("woff2"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff") format("woff"), url("../storage/fonts/montserrat/montserrat-v12-latin-900.woff2") format("truetype");
 }
+
 *::-webkit-scrollbar{
     display: none;
 }
@@ -138,7 +139,7 @@ body {
     line-height: 1.8;
     color: #222;
     font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat','Nunito', sans-serif;
     background-image: url("../storage/images/bg.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -389,6 +390,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
 #messages {
     height: calc(100vh - 95px);
     overflow: auto;
+    padding: 5px 0;
 }
 
 
@@ -574,23 +576,29 @@ html.disabled{
     border-radius: 7.5px;
     position: relative;
     clear: both;
-    margin: 5px 10px;
+    margin: 1px 10px;
     box-shadow: 0 1px 0.5px #00000021;
+    padding-right: 60px;
 }
 
 .message.left{
     background: #ffffff;
-    border-top-left-radius: 0;
     float: left;
 }
 
 .message.right{
     background: #dcf8c6;
-    border-top-right-radius: 0;
     float: right;
 }
 
-.message.left::before, .message.right::before {
+.message.left[arrowed]{
+    border-top-left-radius: 0;
+}
+.message.right[arrowed]{
+    border-top-right-radius: 0;
+}
+
+.message.left[arrowed]::before, .message.right[arrowed]::before {
     content: '';
     display: inline-block;
     position: absolute;
@@ -600,13 +608,13 @@ html.disabled{
     border-top-width: 4px;
 }
 
-.message.left::before {
+.message.left[arrowed]::before {
     left: -16px;
     border-right-color: #ffffff;
     transform: rotate(22deg);
 }
 
-.message.right::before{
+.message.right[arrowed]::before{
     right: -16px;
     border-left-color: #dcf8c6;
     transform: rotate(-22deg);
@@ -652,6 +660,17 @@ html.disabled{
     bottom: 0;
     text-align: center;
     z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatProfile .pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    object-fit: cover;
+    margin-right: 15px;
 }
 
 .name {
@@ -662,6 +681,10 @@ html.disabled{
 .status {
     color: #979797;
     font-size: 10px;
+}
+
+.message,#message,.status{
+    font-family: 'Nunito', sans-serif !important;
 }
 
 .inbox-name {
@@ -685,6 +708,60 @@ html.disabled{
     transition: 500ms;
     animation: flip 0.3s linear;
 }
+
+.message-info {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    height: 22px;
+}
+
+.date {
+    font-size: 10px;
+    color: #848484;
+    display: inline-block;
+}
+
+.read-status {
+    font: normal normal normal 15px/1 'Material-Design-Iconic-Font';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    vertical-align: -1px;
+    color: #8a8a8a;
+}
+
+.read-status[inf=sending][anime]{
+    animation: 500ms flip;
+}
+.read-status[inf=sent][anime]{
+    animation: 500ms flip;
+}
+.read-status[inf=delivered][anime]{
+    animation: 500ms flip;
+}
+.read-status[inf=read][anime]{
+    animation: 500ms flip;
+}
+
+
+.read-status[inf=sending]::before{
+    content: '\f337';
+    font-size: 13px;
+}
+.read-status[inf=sent]::before{
+    content: '\f26b';
+}
+.read-status[inf=delivered]::before{
+    content: '\f267';
+}
+.read-status[inf=read]::before{
+    content: '\f267';
+    color:rgb(79, 195, 247);
+}
+
+
 
 @keyframes flip {
     0% {

@@ -3,8 +3,14 @@
 	<div class="row no-gutters messaging-outer">
 		<div id="messages" class="col-md-12">
 			@each(message in messages)
-				<div class="message {{message.userId===user.id?'right':'left'}}">
+				<div class="message {{message.userId===user.id?'right':'left'}}" {{messages[$loop.index-1].userId!=message.userId?'arrowed':''}}>
 					{{message.message}}
+					<div class="message-info">
+						<div class="date">16:54</div>
+						@if(message.userId===user.id)
+							<div class="read-status" inf="read"></div>
+						@endif
+					</div>
 				</div>
 			@endeach
 		</div>
